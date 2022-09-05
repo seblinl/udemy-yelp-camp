@@ -1,0 +1,39 @@
+<% layout("layouts/boilerplate") %>
+    <div class="row">
+        <h1 class="text-center">Edit Campground - <%= campground.title %>
+        </h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="post" class="needs-validation"
+                novalidate>
+                <div class="mb-2">
+                    <label class="form-label" for="title">Name of the campground:</label>
+                    <input class="form-control" type="text" name="campground[title]" id="title" placeholder="Title"
+                        value="<%= campground.title %>" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="location">Location:</label>
+                    <input class="form-control" type="text" name="campground[location]" id="location"
+                        placeholder="City, State" value="<%= campground.location %>" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="description">Description:</label>
+                    <textarea class="form-control" name="campground[description]" id="description"
+                        placeholder="Describe the campground..." rows="3"
+                        required><%= campground.description %></textarea>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="image">Image URL:</label>
+                    <input class="form-control" type="text" name="campground[image]" id="image"
+                        placeholder="http://website/image.png" value="<%= campground.image %>" required>
+                </div>
+                <label for="price" class="form-label">Price:</label>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" id="priceIcon">&dollar;</span>
+                    <input class="form-control" type="text" name="campground[price]" id="price" placeholder="0.00"
+                        value="<%= campground.price %>" aria-describedby="priceIcon" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>">Cancel</a>
+            </form>
+        </div>
+    </div>
