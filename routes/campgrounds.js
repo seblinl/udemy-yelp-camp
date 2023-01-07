@@ -65,12 +65,14 @@ router.put(
 router.get(
   "/:id",
   catchAsync(async (req, res, next) => {
-    const camp = await Campground.findById(req.params.id).populate("reviews");
-    if (!camp) {
+    const campground = await Campground.findById(req.params.id).populate(
+      "reviews"
+    );
+    if (!campground) {
       req.flash("error", "The campground can't be found.");
       return res.redirect("/campgrounds");
     }
-    res.render("campgrounds/details", { camp });
+    res.render("campgrounds/details", { campground });
   })
 );
 
